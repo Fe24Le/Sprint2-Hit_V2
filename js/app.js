@@ -57,3 +57,44 @@ menu.addEventListener('click',()=>{
 menuClose.addEventListener('click',()=>{
     document.querySelector('.header-menu-movil').classList.remove('active');
 })
+
+// --------------------------------------- carrito----------------------------
+document.addEventListener("DOMContentLoaded", function() {
+  const itemsContainer = document.getElementById("items-container");
+  const totalElement = document.getElementById("total");
+  const checkoutBtn = document.getElementById("checkout-btn");
+  let total = 0;
+
+  // Función para agregar un elemento al carrito
+  function addItem(name, price) {
+    const item = document.createElement("div");
+    item.classList.add("item");
+    item.innerHTML = `
+      <span>${name}</span>
+      <span>$${price}</span>
+    `;
+    itemsContainer.appendChild(item);
+    total += price;
+    updateTotal();
+  }
+
+  // Función para actualizar el total
+  function updateTotal() {
+    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  }
+
+  // Evento al hacer clic en el botón de pagar
+  checkoutBtn.addEventListener("click", function() {
+    alert("Gracias por su compra. Total a pagar: $" + total.toFixed(2));
+    // Aquí podrías agregar lógica adicional, como enviar la información del carrito a un servidor, etc.
+  });
+
+  // Ejemplo: Agregar algunos elementos al carrito
+   addItem("Call of Duty", 11001);
+   addItem("Assasin Creed ",11002);
+   addItem("God of Wars", 11003);
+   addItem("Mortal Kombat11", 11008);
+
+
+});
+
